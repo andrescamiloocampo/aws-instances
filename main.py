@@ -2,16 +2,12 @@ import boto3
 
 client = boto3.client(
         's3',
-        region_name='us-east-1',
-        aws_access_key_id='AKIAQWHCQCNBFQGBJIWN', 
-        aws_secret_access_key='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'
+        region_name='us-east-1',    
 )
 
 ec2_client = boto3.client(
         'ec2',
-        region_name='us-east-1',
-        aws_access_key_id='AKIAQWHCQCNBFQGBJIWN', 
-        aws_secret_access_key='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'
+        region_name='us-east-1'
 )
 
 bucket = 'andres-ocampo-bucket'
