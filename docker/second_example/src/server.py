@@ -10,5 +10,5 @@ def list_buckets():
     response = s3.list_buckets()
     return response
 
-if __name__ = "__main__":
+if __name__ == "__main__":
     server.run(host='0.0.0.0')
