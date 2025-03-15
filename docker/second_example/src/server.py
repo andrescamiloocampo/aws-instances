@@ -7,7 +7,7 @@ s3 = boto3.client('s3')
 
 @server.route("/")
 def list_buckets():
-    query = request.args.get('name')  
+    query = request.args.get('query')  
     
     if query:
         try:
