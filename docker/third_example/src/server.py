@@ -7,12 +7,14 @@ s3 = boto3.client('s3')
 
 @server.route("/")
 def list_buckets():
-    query = request.args.get('query')  
+    query = request.args.get('query')  # Obtiene el parámetro de consulta 'query'
     
     if query:
         try:
-            s3.head_bucket(Bucket=query) 
-            return jsonify({"Bucket": query})
+            s3.head_bucket(Bucket=query)  # Verifica si el bucket existe
+            objects = s3.list_objects_v2(Bucket=query)
+            object_names = [obj['Key'] for obj in objects.get('Contents', [])]
+            return jsonify({"Bucket": query, "Objects": object_names})
         except s3.exceptions.ClientError:
             return jsonify({"Error": "Bucket not found"}), 404
     
